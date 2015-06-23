@@ -1,0 +1,55 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>exemplo-liquibase</groupId>
+	<artifactId>exemplo</artifactId>
+	<version>1.0.0</version>
+	<packaging>jar</packaging>
+
+	<name>exemplo</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.4-1200-jdbc41</version>
+		</dependency>
+
+	</dependencies>
+	<profiles>
+		<profile>
+			<id>liquibase-update</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.liquibase</groupId>
+						<artifactId>liquibase-maven-plugin</artifactId>
+						<version>3.1.1</version>
+						
+						<configuration>
+							<propertyFileWillOverride>true</propertyFileWillOverride>
+							<promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+							<skip>false</skip>
+							<propertyFile>src/main/resources/ambientes/${liquibase_context_name}.properties</propertyFile>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+	</profiles>
+
+</project>
