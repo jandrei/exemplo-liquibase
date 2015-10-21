@@ -1,3 +1,6 @@
+
+![alt text](https://travis-ci.org/jandrei/exemplo-liquibase.svg?branch=master "Build with Travis-ci.org")
+
 # exemplo-liquibase
 exemplos de execução de projeto com liquibase e maven, criando versões de banco e fazendo rollback.
 
